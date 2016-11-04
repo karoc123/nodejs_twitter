@@ -31,14 +31,16 @@ exports.register = {
   auth: false,
 
   validate: {
-    options: {
-      abortEarly: false,
-    },
+
     payload: {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+    },
+
+    options: {
+      abortEarly: false,
     },
 
     failAction: function (request, reply, source, error) {
@@ -55,28 +57,31 @@ exports.register = {
 
     user.save().then(newUser => {
       reply.redirect('/login');
-  }).catch(err => {
+    }).catch(err => {
       reply.redirect('/');
-  });
+    });
   },
 
 };
 
 exports.authenticate = {
+
   auth: false,
 
   validate: {
-    options: {
-      abortEarly: false,
-    },
+
     payload: {
       email: Joi.string().email().required(),
       password: Joi.string().required(),
     },
 
+    options: {
+      abortEarly: false,
+    },
+
     failAction: function (request, reply, source, error) {
       reply.view('login', {
-        title: 'Login error',
+        title: 'Sign in error',
         errors: error.data.details,
       }).code(400);
     },
@@ -117,9 +122,9 @@ exports.viewSettings = {
     var userEmail = request.auth.credentials.loggedInUser;
     User.findOne({ email: userEmail }).then(foundUser => {
       reply.view('settings', { title: 'Edit Account Settings', user: foundUser });
-  }).catch(err => {
+    }).catch(err => {
       reply.redirect('/');
-  });
+    });
   },
 
 };
@@ -127,9 +132,7 @@ exports.viewSettings = {
 exports.updateSettings = {
 
   validate: {
-    options: {
-      abortEarly: false,
-    },
+
     payload: {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
@@ -137,12 +140,14 @@ exports.updateSettings = {
       password: Joi.string().required(),
     },
 
+    options: {
+      abortEarly: false,
+    },
+
     failAction: function (request, reply, source, error) {
-      const editedUser = request.payload;
-      reply.view('settings', {
-        title: 'Setting up error',
+      reply.view('signup', {
+        title: 'Sign up error',
         errors: error.data.details,
-        user: editedUser,
       }).code(400);
     },
 
@@ -154,15 +159,15 @@ exports.updateSettings = {
 
     User.findOne({ email: loggedInUserEmail }).then(user => {
       user.firstName = editedUser.firstName;
-    user.lastName = editedUser.lastName;
-    user.email = editedUser.email;
-    user.password = editedUser.password;
-    return user.save();
-  }).then(user => {
+      user.lastName = editedUser.lastName;
+      user.email = editedUser.email;
+      user.password = editedUser.password;
+      return user.save();
+    }).then(user => {
       reply.view('settings', { title: 'Edit Account Settings', user: user });
-  }).catch(err => {
+    }).catch(err => {
       reply.redirect('/');
-  });
+    });
   },
 
 };

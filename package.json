@@ -10,12 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "boom": "^3.2.2",
     "handlebars": "^4.0.5",
     "hapi": "^14.1.0",
     "hapi-auth-cookie": "^6.1.1",
     "inert": "^4.0.1",
-    "joi": "^9.2.0",
+    "joi": "^9.0.4",
+    "lodash": "^4.16.6",
     "mongoose": "^4.5.8",
+    "mongoose-seeder": "^1.2.1",
     "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "sync-request": "^3.0.1"
   }
 }
