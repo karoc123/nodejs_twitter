@@ -16,6 +16,7 @@ mongoose.connection.on('connected', function () {
     var seeder = require('mongoose-seeder');
     const data = require('./initdata.json');
     const Donation = require('./donation');
+    const Micro = require('./micro');
     const User = require('./user');
     const Candidate = require('./candidate.js');
     seeder.seed(data, { dropDatabase: false, dropCollections: true }).then(dbData => {
