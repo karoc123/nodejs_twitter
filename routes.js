@@ -1,6 +1,7 @@
 const Accounts = require('./app/controllers/accounts');
 const Donations = require('./app/controllers/donations');
 const Assets = require('./app/controllers/assets');
+const Blog = require('./app/controllers/micros');
 
 module.exports = [
 
@@ -16,6 +17,10 @@ module.exports = [
   { method: 'GET', path: '/home', config: Donations.home },
   { method: 'GET', path: '/report', config: Donations.report },
   { method: 'POST', path: '/donate', config: Donations.donate },
+
+  { method: 'GET', path: '/micro', config: Blog.main },
+  { method: 'POST', path: '/micro', config: Blog.posting },
+  { method: 'GET', path: '/timeline/{user?}', config: Blog.timeline },
 
   {
     method: 'GET',

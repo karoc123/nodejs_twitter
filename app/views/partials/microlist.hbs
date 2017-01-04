@@ -1,0 +1,10 @@
+<section class="ui raised segment">
+    <div class="ui grid">
+        <article class="sixteen wide column">
+                {{#each micros}}
+                    {{text}} um: {{time}} von: <a href="/timeline/{{poster._id}}">{{poster.firstName}} {{poster.lastName}}</a>
+                    <br />
+                {{/each}}
+        </article>
+    </div>
+</section>

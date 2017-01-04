@@ -1,7 +1,7 @@
 {
-  "name": "donation-web",
+  "name": "microblog-web",
   "version": "1.0.0",
-  "description": "an application to host donations for candidates",
+  "description": "an application to make micro blogs like twitter",
   "main": "index.js",
   "scripts": {
     "start": "node index",
@@ -12,6 +12,7 @@
   "dependencies": {
     "boom": "^3.2.2",
     "handlebars": "^4.0.5",
+    "handlebars-helpers": "^0.7.5",
     "hapi": "^14.1.0",
     "hapi-auth-cookie": "^6.1.1",
     "hapi-auth-jwt2": "^7.1.3",
