@@ -6,7 +6,7 @@ const Joi = require('joi');
 
 exports.main = {
   handler: function (request, reply) {
-    Micro.find({}).populate('poster').then(allMicros => {
+    Micro.find({}).populate('poster').sort( { time : -1 } ).then(allMicros => {
       reply.view('micro', {
         title: 'All Micros',
         micros: allMicros,
@@ -20,7 +20,7 @@ exports.main = {
 
 exports.timeline = {
   handler: function (request, reply) {
-    Micro.find({ poster: request.params.user }).populate('poster').then(allMicros => {
+    Micro.find({ poster: request.params.user }).populate('poster').sort( { time : -1 } ).then(allMicros => {
       reply.view('micro', {
         title: 'Timeline',
         micros: allMicros,

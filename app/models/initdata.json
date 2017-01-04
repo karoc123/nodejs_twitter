@@ -53,5 +53,18 @@
       "donor": "->users.homer",
       "candidate": "->candidates.donald"
     }
+  },
+  "micros": {
+    "_model": "Micro",
+    "one": {
+      "text": "This is a macro from Bart!",
+      "time": 1483537896606,
+      "poster": "->users.bart"
+    },
+    "two": {
+      "text": "This is a macro from homer! Its newer then the one from Bart!",
+      "time": 1483538865720,
+      "donor": "->users.homer"
+    }
   }
 }
