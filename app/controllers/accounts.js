@@ -1,6 +1,7 @@
 'use strict';
 
 const User = require('../models/user');
+const Gravatar = require('../helper/gravatarimage');
 const Joi = require('joi');
 
 exports.main = {
@@ -54,6 +55,7 @@ exports.register = {
 
   handler: function (request, reply) {
     const user = new User(request.payload);
+    user.gravatarUrl = Gravatar.getGravatarUrl(user.email);
 
     user.save().then(newUser => {
       reply.redirect('/login');
@@ -162,6 +164,7 @@ exports.updateSettings = {
       user.lastName = editedUser.lastName;
       user.email = editedUser.email;
       user.password = editedUser.password;
+      user.gravatarUrl = Gravatar.getGravatarUrl(editedUser.email);
       return user.save();
     }).then(user => {
       reply.view('settings', { title: 'Edit Account Settings', user: user });

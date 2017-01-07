@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const microSchema = mongoose.Schema({
-  time: Number,
+  time: Date,
   text: String,
   poster: {
     type: mongoose.Schema.Types.ObjectId,

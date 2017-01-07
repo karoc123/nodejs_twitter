@@ -5,19 +5,22 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "gravatarUrl": "//www.gravatar.com/avatar/70e02cfe9ec03d8eef8b5c03d3ea56af"
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "gravatarUrl": "//www.gravatar.com/avatar/70e02cfe9ec03d8eef8b5c03d3ea56af"
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "gravatarUrl": "//www.gravatar.com/avatar/70e02cfe9ec03d8eef8b5c03d3ea56af"
     }
   },
   "candidates": {

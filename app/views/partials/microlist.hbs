@@ -2,8 +2,18 @@
     <div class="ui grid">
         <article class="sixteen wide column">
                 {{#each micros}}
-                    {{text}} um: {{time}} von: <a href="/timeline/{{poster._id}}">{{poster.firstName}} {{poster.lastName}}</a>
-                    <br />
+                    <div class="ui cards">
+                        <div class="card" style="width: 100%">
+                            <div class="content">
+                                <a href="/timeline/{{poster._id}}">
+                                    <img class="right floated ui tiny circular image" src="{{poster.gravatarUrl}}?s=200">
+                                    <div class="header">{{poster.firstName}} {{poster.lastName}}</div>
+                                </a>
+                                <div class="meta">{{time}}</div>
+                                <div class="description">{{text}}</div>
+                            </div>
+                        </div>
+                    </div>
                 {{/each}}
         </article>
     </div>
