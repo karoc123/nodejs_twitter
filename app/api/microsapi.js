@@ -5,7 +5,9 @@ const Boom = require('boom');
 
 exports.find = {
 
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+  },
 
   handler: function (request, reply) {
     Micro.find({}).exec().then(micros => {
@@ -19,7 +21,9 @@ exports.find = {
 
 exports.findOne = {
 
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+  },
 
   handler: function (request, reply) {
     Micro.findOne({ _id: request.params.id }).then(micro => {
@@ -37,7 +41,9 @@ exports.findOne = {
 
 exports.findFromUser = {
 
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+  },
 
   handler: function (request, reply) {
     Micro.find({ poster: request.params.id }).populate('poster').sort( { time : -1 } ).then(micros => {
@@ -55,7 +61,9 @@ exports.findFromUser = {
 
 exports.deleteOne = {
 
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+  },
 
   handler: function (request, reply) {
     Micro.remove({ _id: request.params.id }).then(micro => {
