@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
   email: String,
   gravatarUrl: String,
   password: String,
+  isAdmin: Boolean,
 });
 
 const User = mongoose.model('User', userSchema);
