@@ -25,7 +25,7 @@ exports.findDonations = {
   },
 
   handler: function (request, reply) {
-    Donation.find({ candidate: request.params.id }).then(donations => {
+    Donation.find({ candidate: request.params.id }).populate('candidate').then(donations => {
       reply(donations);
     }).catch(err => {
       reply(Boom.badImplementation('error accessing db'));
@@ -44,7 +44,9 @@ exports.makeDonation = {
     const donation = new Donation(request.payload);
     donation.candidate = request.params.id;
     donation.save().then(newDonation => {
-      reply(newDonation).code(201);
+      Donation.findOne(newDonation).populate('candidate').then(donation => {
+        reply(donation).code(201);
+      });
     }).catch(err => {
       reply(Boom.badImplementation('error making donation'));
     });

@@ -21,6 +21,7 @@ module.exports = [
   { method: 'GET', path: '/micro', config: Blog.main },
   { method: 'POST', path: '/micro', config: Blog.posting },
   { method: 'GET', path: '/timeline/{user?}', config: Blog.timeline },
+  { method: 'GET', path: '/delete/{id?}', config: Blog.deleteOne },
 
   {
     method: 'GET',

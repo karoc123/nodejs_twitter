@@ -72,17 +72,22 @@ exports.posting = {
 
 
   },
+};
 
- /* handler: function (request, reply) {
-    let data = request.payload;
-    data.time = Date.now();
-    const micro = new Micro(data);
+exports.deleteOne = {
 
-    micro.save().then(newMicro => {
-      reply.redirect('/micro');
-    }).catch(err => {
+  handler: function (request, reply) {
+    Micro.remove({ _id: request.params.id }).then(micro => {
+      Micro.find({}).populate('poster').sort( { time : -1 } ).then(allMicros => {
+        reply.view('micro', {
+          title: 'All Micros',
+          micros: allMicros,
+        });
+      }).catch(err => {
+        reply.redirect('/');
+      });    }).catch(err => {
       reply.redirect('/');
     });
   },
-**/
+
 };
