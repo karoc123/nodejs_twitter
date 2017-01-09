@@ -71,7 +71,7 @@
       "poster": "->users.homer"
     },
     "three": {
-      "text": "This is a macro from Marge! Its newer then the one from Bart!",
+      "text": "This is a macro from Marge! Its newer than the one from Bart!",
       "time": 1483538865720,
       "poster": "->users.marge"
     }

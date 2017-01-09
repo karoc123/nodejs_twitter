@@ -1,6 +1,7 @@
 'use strict';
 
 const User = require('../models/user');
+const Micro = require('../models/micro');
 const Gravatar = require('../helper/gravatarimage');
 const Joi = require('joi');
 
@@ -188,7 +189,14 @@ exports.followUser = {
       }
       return user.save();
     }).then(user => {
-      reply.view('settings', { title: 'Edit Account Settings', user: user });
+      Micro.find({ poster: request.params.id }).populate('poster').sort( { time : -1 } ).then(allMicros => {
+        reply.view('micro', {
+          title: 'Timeline',
+          micros: allMicros,
+        });
+      }).catch(err => {
+        reply.redirect('/');
+      });
     }).catch(err => {
       reply.redirect('/');
     });
