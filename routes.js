@@ -22,6 +22,7 @@ module.exports = [
   { method: 'POST', path: '/micro', config: Blog.posting },
   { method: 'GET', path: '/timeline/{user?}', config: Blog.timeline },
   { method: 'GET', path: '/delete/{id?}', config: Blog.deleteOne },
+  { method: 'GET', path: '/follow/{id?}', config: Accounts.followUser },
 
   {
     method: 'GET',

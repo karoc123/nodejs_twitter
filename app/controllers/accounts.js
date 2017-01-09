@@ -174,3 +174,24 @@ exports.updateSettings = {
   },
 
 };
+
+exports.followUser = {
+
+  handler: function (request, reply) {
+    const loggedInUserEmail = request.auth.credentials.loggedInUser;
+
+    User.findOne({ email: loggedInUserEmail }).then(user => {
+      if(user.following != undefined){
+        user.following.push(request.params.id);
+      } else {
+        user.following = [request.params.id];
+      }
+      return user.save();
+    }).then(user => {
+      reply.view('settings', { title: 'Edit Account Settings', user: user });
+    }).catch(err => {
+      reply.redirect('/');
+    });
+  },
+
+};
