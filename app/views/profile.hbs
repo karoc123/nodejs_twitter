@@ -1,0 +1,21 @@
+{{> mainmenu _id="profile" }}
+
+<section class="ui raised segment">
+    <div class="ui grid">
+        <div class="ui sixteen wide column">
+            <div class="ui stacked fluid form segment">
+                <h3 class="ui header">Profile of {{user.firstName}} {{user.lastName}}</h3>
+                <a href="/follow/{{user._id}}">
+                    <div class="ui animated button" tabindex="0">
+                        <div class="visible content">Follow {{user.firstName}} {{user.lastName}}</div>
+                        <div class="hidden content">
+                            and show Micros <i class="right arrow icon"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{> followinglist }}

@@ -13,6 +13,7 @@ module.exports = [
   { method: 'GET', path: '/logout', config: Accounts.logout },
   { method: 'GET', path: '/settings', config: Accounts.viewSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
+  { method: 'GET', path: '/profile/{email?}', config: Accounts.profile },
 
   { method: 'GET', path: '/home', config: Donations.home },
   { method: 'GET', path: '/report', config: Donations.report },

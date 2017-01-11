@@ -183,7 +183,7 @@ exports.followUser = {
 
     User.findOne({ email: loggedInUserEmail }).then(user => {
       if(user.following != undefined){
-        user.following.push(request.params.id);
+        user.following.addToSet(request.params.id);
       } else {
         user.following = [request.params.id];
       }
@@ -200,6 +200,29 @@ exports.followUser = {
     }).catch(err => {
       reply.redirect('/');
     });
+  },
+
+};
+
+exports.profile = {
+
+  handler: function (request, reply) {
+    let email;
+    if(request.params.email != undefined){
+      email = request.params.email
+    } else {
+      email = request.auth.credentials.loggedInUser;
+    }
+
+    User.findOne({ email: email }).populate({ path: 'following', model: 'User'}).then(user => {
+        reply.view('profile', {
+          title: 'Profile of' + user.email,
+          user: user,
+          following: user.following,
+        });
+      }).catch(err => {
+        reply.redirect('/');
+      });
   },
 
 };

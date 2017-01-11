@@ -1,0 +1,29 @@
+<section class="ui raised segment">
+    <div class="ui grid">
+        <article class="eight wide column">
+            <h3>
+                {{user.firstName}} {{user.lastName}} follows these Users:
+            </h3>
+            {{#each following}}
+                <div class="ui cards">
+                    <div class="card" style="width: 100%">
+                        <div class="content">
+                            <a href="/timeline/{{_id}}">
+                                <img class="right floated ui tiny circular image" src="{{gravatarUrl}}?s=200">
+                            </a>
+                            <div class="header"><h3>{{firstName}} {{lastName}}</h3></div>
+                            <div class="description">
+                                <a href="/timeline/{{_id}}">
+                                    Tweets of {{firstName}} {{lastName}}
+                                </a> <br/>
+                                <a href="/profile/{{email}}">
+                                    Profile of {{firstName}} {{lastName}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </article>
+    </div>
+</section>

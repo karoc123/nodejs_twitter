@@ -3,14 +3,10 @@
   <div class="right menu">
     <a id="home"   class= "item" href="/home"> Donate</a>
     <a id="micro"   class= "item" href="/micro"> MicroBlog</a>
+    <a id="profile"   class= "item" href="/profile"> My Profile</a>
     <a id="report" class= "item" href="/report"> Report</a>
     <a id="settings" class= "item" href="/settings"> Settings</a>
-
-      {{!-- only output dashboard link if account is admin --}}
-      {{#if user.isAdmin}}
-        <a id="dashboard" class="item" href="/dashboard">Dashboard</a>
-      {{/if}}
-
+    <a id="dashboard" class="item" href="/dashboard">Dashboard</a>
     <a id="logout" class= "item" href="/logout"> Logout</a>
   </div>
 </nav>
