@@ -1,29 +1,29 @@
 <section class="ui raised segment">
     <div class="ui grid">
-        <article class="eight wide column">
+        <article class="sixteen wide column">
             <h3>
                 {{user.firstName}} {{user.lastName}} follows these Users:
             </h3>
+            <div class="ui link cards">
             {{#each following}}
-                <div class="ui cards">
-                    <div class="card" style="width: 100%">
+                    <div class="card">
+                        <div class="image">
+                            <img src="{{gravatarUrl}}?s=400">
+                        </div>
                         <div class="content">
-                            <a href="/timeline/{{_id}}">
-                                <img class="right floated ui tiny circular image" src="{{gravatarUrl}}?s=200">
-                            </a>
-                            <div class="header"><h3>{{firstName}} {{lastName}}</h3></div>
-                            <div class="description">
-                                <a href="/timeline/{{_id}}">
-                                    Tweets of {{firstName}} {{lastName}}
-                                </a> <br/>
-                                <a href="/profile/{{email}}">
-                                    Profile of {{firstName}} {{lastName}}
-                                </a>
+                            <div class="header">{{firstName}} {{lastName}}</div>
+                            <div class="meta">
+                                <a>Friends</a>
                             </div>
+                            <div class="description">Matthew is an interior designer living in New York. </div>
+                        </div>
+                        <div class="extra content">
+                            <a href="/timeline/{{_id}}"><div class="ui basic green button">Micros</div></a>
+                            <a href="/profile/{{email}}"><div class="ui basic green button right floated"><i class="user icon"></i> Profile</div></a>
                         </div>
                     </div>
-                </div>
             {{/each}}
+            </div>
         </article>
     </div>
 </section>
