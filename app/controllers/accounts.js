@@ -132,6 +132,28 @@ exports.viewSettings = {
 
 };
 
+exports.stats = {
+
+  handler: function (request, reply) {
+    var userEmail = request.auth.credentials.loggedInUser;
+    User.find({ }).then(allUsers => {
+      Micro.find({ }).then(allMicros => {
+        reply.view('stats', {
+          title: 'All Stats',
+          users: allUsers,
+          usercount: allUsers.length,
+          microcounter: allMicros.length,
+        });
+      }).catch(err => {
+        reply.redirect('/');
+      });
+    }).catch(err => {
+      reply.redirect('/');
+    });
+  },
+
+};
+
 exports.updateSettings = {
 
   validate: {

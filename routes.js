@@ -1,5 +1,4 @@
 const Accounts = require('./app/controllers/accounts');
-const Donations = require('./app/controllers/donations');
 const Assets = require('./app/controllers/assets');
 const Blog = require('./app/controllers/micros');
 
@@ -15,15 +14,12 @@ module.exports = [
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
   { method: 'GET', path: '/profile/{email?}', config: Accounts.profile },
 
-  { method: 'GET', path: '/home', config: Donations.home },
-  { method: 'GET', path: '/report', config: Donations.report },
-  { method: 'POST', path: '/donate', config: Donations.donate },
-
   { method: 'GET', path: '/micro', config: Blog.main },
   { method: 'GET', path: '/followmicro', config: Blog.followmicro },
   { method: 'POST', path: '/micro', config: Blog.posting },
   { method: 'GET', path: '/timeline/{user?}', config: Blog.timeline },
   { method: 'GET', path: '/delete/{id?}', config: Blog.deleteOne },
+  { method: 'GET', path: '/stats', config: Accounts.stats },
   { method: 'GET', path: '/follow/{id?}', config: Accounts.followUser },
 
   {

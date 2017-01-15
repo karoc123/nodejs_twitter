@@ -1,0 +1,55 @@
+{{> mainmenu _id="stats" }}
+<p class="header"><h3>Statistics</h3></p>
+<section class="ui raised segment">
+    <div class="ui grid">
+        <div class="ui eight wide column">
+            <div class="content">
+                <table class="ui very basic collapsing celled table">
+                    <thead>
+                    <tr><th>Description</th>
+                        <th>Number</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>Number of Users:</p>
+                            <td>
+                                {{usercount}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Number of Micros (without deleted):</p>
+                            <td>
+                                {{microcounter}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="ui eight wide column">
+            <table class="ui very basic collapsing celled table">
+                <thead>
+                <tr><th>User</th>
+                    <th>Micros (incl. deleted)</th>
+                </tr></thead>
+                <tbody>
+                {{#each users}}
+                <tr>
+                    <td>
+                        <h4 class="ui image header">
+                            <img src="{{gravatarUrl}}?s=400" class="ui mini rounded image">
+                            <div class="content">{{firstName}} {{lastName}}
+                            </div>
+                        </h4></td>
+                    <td>
+                        {{numberOfMicros}}
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

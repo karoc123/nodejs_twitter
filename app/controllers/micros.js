@@ -32,7 +32,7 @@ exports.followmicro = {
       Micro.find({poster: { $in: followIds }}).populate('poster').sort( { time : -1 } ).then(allMicros => {
 
         reply.view('followmicro', {
-          title: 'Personal Timeline',
+          title: 'Personal news feed',
           micros: allMicros,
         });
       }).catch(err => {

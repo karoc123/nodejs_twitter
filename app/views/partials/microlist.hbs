@@ -1,6 +1,7 @@
 <section class="ui raised segment">
     <div class="ui grid">
         <article class="sixteen wide column">
+            {{#if micros}}
                 {{#each micros}}
                     <div class="ui cards">
                         <div class="card" style="width: 100%">
@@ -17,6 +18,11 @@
                         </div>
                     </div>
                 {{/each}}
+            {{else}}
+                <h3 style="color: red">
+                    There are no micros on your news feed! Follow someone to see some micros in your personal feed!
+                </h3>
+            {{/if}}
         </article>
     </div>
 </section>
