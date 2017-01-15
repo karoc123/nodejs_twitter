@@ -20,6 +20,7 @@ module.exports = [
   { method: 'POST', path: '/donate', config: Donations.donate },
 
   { method: 'GET', path: '/micro', config: Blog.main },
+  { method: 'GET', path: '/followmicro', config: Blog.followmicro },
   { method: 'POST', path: '/micro', config: Blog.posting },
   { method: 'GET', path: '/timeline/{user?}', config: Blog.timeline },
   { method: 'GET', path: '/delete/{id?}', config: Blog.deleteOne },

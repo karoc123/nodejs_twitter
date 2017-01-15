@@ -3,16 +3,20 @@
 <section class="ui raised segment">
     <div class="ui grid">
         <div class="ui sixteen wide column">
-            <div class="ui stacked fluid form segment">
-                <h3 class="ui header">Profile of {{user.firstName}} {{user.lastName}}</h3>
-                <a href="/follow/{{user._id}}">
-                    <div class="ui animated button" tabindex="0">
-                        <div class="visible content">Follow {{user.firstName}} {{user.lastName}}</div>
-                        <div class="hidden content">
-                            and show Micros <i class="right arrow icon"></i>
-                        </div>
-                    </div>
-                </a>
+            <div class="content">
+                <p class="header"><h3>Profile of {{user.firstName}} {{user.lastName}}</h3></p>
+                <div class="extra">
+                    <img src="{{user.gravatarUrl}}?s=200" class="ui wireframe image">
+                </div>
+                <br/>
+                <div class="extra">
+                    <a href="/timeline/{{user._id}}">
+                        <div class="ui left floated primary button">Micros of {{user.firstName}} {{user.lastName}} <i class="right chevron icon"></i> </div>
+                    </a>
+                    <a href="/follow/{{user._id}}">
+                        <div class="ui right floated primary button">Follow {{user.firstName}} {{user.lastName}} <i class="right chevron icon"></i> </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

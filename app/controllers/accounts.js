@@ -57,7 +57,7 @@ exports.register = {
   handler: function (request, reply) {
     const user = new User(request.payload);
     user.gravatarUrl = Gravatar.getGravatarUrl(user.email);
-
+    user.numberOfMicros = 0;
     user.save().then(newUser => {
       reply.redirect('/login');
     }).catch(err => {
@@ -99,7 +99,7 @@ exports.authenticate = {
           loggedIn: true,
           loggedInUser: user.email,
         });
-        reply.redirect('/home');
+        reply.redirect('/micro');
       } else {
         reply.redirect('/signup');
       }

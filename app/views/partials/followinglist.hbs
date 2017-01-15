@@ -5,24 +5,30 @@
                 {{user.firstName}} {{user.lastName}} follows these Users:
             </h3>
             <div class="ui link cards">
-            {{#each following}}
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{gravatarUrl}}?s=400">
-                        </div>
-                        <div class="content">
-                            <div class="header">{{firstName}} {{lastName}}</div>
-                            <div class="meta">
-                                <a>Friends</a>
+            {{#if following }}
+                {{#each following}}
+                        <div class="card">
+                            <div class="image">
+                                <img src="{{gravatarUrl}}?s=400">
                             </div>
-                            <div class="description">Matthew is an interior designer living in New York. </div>
+                            <div class="content">
+                                <div class="header">{{firstName}} {{lastName}}</div>
+                                <div class="meta">
+                                    <a>Friends</a>
+                                </div>
+                                <div class="description">{{firstName}} {{lastName}} has created {{numberOfMicros}} MicroBlogs</div>
+                            </div>
+                            <div class="extra content">
+                                <a href="/timeline/{{_id}}"><div class="ui basic green button">Micros</div></a>
+                                <a href="/profile/{{email}}"><div class="ui basic green button right floated"><i class="user icon"></i> Profile</div></a>
+                            </div>
                         </div>
-                        <div class="extra content">
-                            <a href="/timeline/{{_id}}"><div class="ui basic green button">Micros</div></a>
-                            <a href="/profile/{{email}}"><div class="ui basic green button right floated"><i class="user icon"></i> Profile</div></a>
-                        </div>
-                    </div>
-            {{/each}}
+                {{/each}}
+            {{else}}
+                <h3 style="color: red">
+                    {{user.firstName}} {{user.lastName}} follows no one!
+                </h3>
+            {{/if}}
             </div>
         </article>
     </div>

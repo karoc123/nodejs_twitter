@@ -18,6 +18,32 @@ exports.main = {
 
 };
 
+exports.followmicro = {
+  handler: function (request, reply) {
+    var userEmail = request.auth.credentials.loggedInUser;
+
+    User.findOne({ email: userEmail }).populate('following').then(user => {
+
+      let followIds = [];
+      for (var i = 0; i < user.following.length; i++) {
+        followIds.push(user.following[i].id);
+      }
+
+      Micro.find({poster: { $in: followIds }}).populate('poster').sort( { time : -1 } ).then(allMicros => {
+
+        reply.view('followmicro', {
+          title: 'Personal Timeline',
+          micros: allMicros,
+        });
+      }).catch(err => {
+        reply.redirect('/');
+      });
+    });
+
+  },
+
+};
+
 exports.timeline = {
   handler: function (request, reply) {
     Micro.find({ poster: request.params.user }).populate('poster').sort( { time : -1 } ).then(allMicros => {
@@ -63,10 +89,13 @@ exports.posting = {
       data.poster = user;
       const micro = new Micro(data);
 
-      micro.save().then(newMicro => {
-        reply.redirect('/micro');
-      }).catch(err => {
-        reply.redirect('/');
+      user.numberOfMicros = user.numberOfMicros+1;
+      user.save().then(user => {
+        micro.save().then(newMicro => {
+          reply.redirect('/micro');
+        }).catch(err => {
+          reply.redirect('/');
+        });
       });
     });
 

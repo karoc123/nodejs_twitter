@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
   gravatarUrl: String,
   password: String,
   isAdmin: Boolean,
+  numberOfMicros: Number,
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 

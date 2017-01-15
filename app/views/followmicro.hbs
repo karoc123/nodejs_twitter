@@ -1,0 +1,21 @@
+{{> mainmenu _id="home" }}
+
+<section class="ui raised segment">
+    <div class="ui grid">
+        <div class="ui sixteen wide column">
+            <div class="ui stacked fluid form segment">
+                <form action="/micro" method="POST">
+                    <h3 class="ui header">New Micro (140 characters)</h3>
+                    <div class="required field">
+                        <label>Text</label>
+                        <textarea rows="2" name="text" maxlength="140"></textarea>
+                    </div>
+                    <button class="ui blue submit button">Submit</button>
+                </form>
+                {{> formerror }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{> microlist }}
