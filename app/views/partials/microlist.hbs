@@ -15,6 +15,11 @@
                                 <div class="meta">{{time}} <a style="color: red" href="/delete/{{id}}">Delete?</a></div>
                                 <div class="description">{{text}}</div>
                             </div>
+                            {{#if image}}
+                                <div class="content">
+                                    <a href="{{image}}"><img class="ui medium image" src="{{image}}"></a>
+                                </div>
+                            {{/if}}
                         </div>
                     </div>
                 {{/each}}

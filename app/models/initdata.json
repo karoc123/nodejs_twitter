@@ -35,14 +35,21 @@
       "poster": "->users.bart"
     },
     "two": {
-      "text": "This is a macro from Homer.!",
+      "text": "This is a macro from Homer! Enjoy the picture in it.",
       "time": 1483537896606,
-      "poster": "->users.homer"
+      "poster": "->users.homer",
+      "image": "http://i.imgur.com/RrPgrGH.png"
     },
     "three": {
       "text": "This is a macro from Marge! Its newer than the one from Bart!",
       "time": 1483538865720,
       "poster": "->users.marge"
+    },
+    "four": {
+      "text": "This is another macro from Marge! It even has a image!",
+      "time": 1483538865800,
+      "poster": "->users.marge",
+      "image": "http://i.imgur.com/KKISUrB.jpg"
     }
   }
 }

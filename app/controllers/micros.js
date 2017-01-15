@@ -62,8 +62,10 @@ exports.posting = {
 
   validate: {
 
+    // there needs to be a regex to make sure no cross site scripting is possible?!
     payload: {
       text: Joi.string().required(),
+      image: Joi.string().allow(''),
     },
 
     options: {
